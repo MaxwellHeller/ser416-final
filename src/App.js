@@ -1,27 +1,59 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Blog from "./Blog";
+import Album from "./Album";
+import Donation from "./Donation"
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+
+    constructor(){
+        super();
+        this.state = {
+            comp: '',
+            type: 'Customer'
+        };
+
+        this.switchTo = this.switchTo.bind(this);
+    }
+
+    switchTo(title) {
+        console.log(title);
+
+        /*
+        switch (title) {
+            case 'Donation':
+                this.setState({
+                    comp: <Donation/>
+                });
+                break;
+            case 'Services':
+                this.setState({
+                    comp: <Album view={'customer'}/>
+                });
+                break;
+            case 'Booking':
+                this.setState({
+                    comp: <Album view={'Employee'}/>
+                });
+                break;
+            default:
+                this.setState({comp: ''});
+            break;
+        }
+        */
+    }
+
+
+    render() {
+
+            return (
+                <div className="Main">
+                    <header>
+                        <Blog click={this.switchTo}/>
+                    </header>
+                </div>
+            );
   }
 }
 
